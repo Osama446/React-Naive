@@ -7,7 +7,7 @@ import HomeScreen from './screens/HomeScreen'
 
 const AnotherScreen = ()=>{
   return(
-  <View>
+  <View style={{padding:15}}>
       <Text style={{color:'black'}}>Another Screen</Text>
   </View>
 );
@@ -28,11 +28,10 @@ const App = ()=>{
           headerTitleAlign:'center',
           headerTitleStyle: {
             fontFamily:'Sf Pro Display',
-            fontWeight: '600',
-            justifySelf:'center'
+            fontWeight: '700',
           },
         }}>
-          <Stack.Screen name="Tasks" component={HomeScreen} />
+          <Stack.Screen name="Tasks" component={HomeScreen} options={{title:'Todo List'}} />
           <Stack.Screen name="History" component={AnotherScreen} options={{title:"Tasks History"}} />
         </Stack.Navigator>
       }
