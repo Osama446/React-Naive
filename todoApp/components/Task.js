@@ -3,27 +3,39 @@ import React, { useState } from 'react'
 import { View, StyleSheet, Text, TextInput, Alert, TouchableOpacity  } from 'react-native'
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 
-const Task = (props) =>{
-    const [Editable, setEditable]= useState(false);
-    const [ToggleEdit, setToggleEdit]= useState(false);
-
+const Task = ( props ) =>{
+    
+    const [Text, setText]= useState(props.name);
+    const [TaskText, setTaskText]= useState('');
+    
+    const [Visible, setVisible]= useState(false);
+    
     return (
         <View style={{padding:2}}>
                 <BouncyCheckbox
                             size={31}
                             fillColor="#60BCFF"
                             unfillColor="#FFFFFF"
-                            text={props.name}
-                            iconStyle={{ borderColor: "red" }}
+                            text={Text}
+                            iconStyle={{  }}
                             innerIconStyle={{ borderWidth: 2 }}
                             textStyle={[style.TaskContent]}
-                            onPress={()=> { if(ToggleEdit) setEditable(!Editable)}}
+                            onPress={()=>{setVisible(true)
+                                          }}
+
                             /> 
-                            {Editable && (<TextInput style={[style.TextInput]} 
-                                            onEndEditing={()=>{
-                                                setEditable(false)
-                                            }} autoFocus={true} placeholderTextColor="black"></TextInput>)
+                            {Visible && (<TextInput style={[[style.TextInput]]} 
+                                autoCapitalize={true} 
+                                value={TaskText} 
+                                onChangeText={(text)=>{setTaskText(text)}}
+                                onEndEditing={()=>{
+                                    if(TaskText.length>0)
+                                        {props?.listChanger(Text, TaskText)}
+                                        setVisible(false)
+                                }} autoFocus={true} />)
                             }
+                            
+                                                    
         </View>
     );
 }
@@ -39,7 +51,14 @@ const style = StyleSheet.create({
         color:'#60BCFF',
         textAlign:'center'
     },
-    TextInput:{position:'absolute', textAlign:'center', color:'black', marginLeft:'30%'}
+    TextInput:{
+    position:'absolute', 
+    textAlign:'center',
+    color:'black',
+    backgroundColor:'#fff',
+    height:'15%',
+    marginTop:'3%',
+    marginLeft:'40%'}
 
 });
 

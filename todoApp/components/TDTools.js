@@ -11,7 +11,7 @@ const Item = (props)=>{
     )
 }
 
-const TDTools = ({stateChanger})=>{
+const TDTools = (props )=>{
     const [isShown, setIsShown] = useState(true);
     return (
         <View style={{alignItems:'center'}}>
@@ -27,7 +27,7 @@ const TDTools = ({stateChanger})=>{
                 
                 <Item source={require(`../images/Edit.png`)} onPress={()=>{}}></Item>
                 
-                <Item source={require(`../images/Delete.png`)} onPress={()=>Alert.alert('Delete')}></Item>
+                <Item source={require(`../images/Delete.png`)} onPress={()=>props?.stateChanger([])}></Item>
 
                 <Item source={require(`../images/Arrow.png`)} onPress={()=>{
                     setIsShown(true);

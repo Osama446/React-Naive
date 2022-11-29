@@ -2,9 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
 const Day = (props) =>{
+    var date = new Date(),
+	  weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
+      let day = weekday[date.getDay()]
     return (
         <View>
-            <Text style={[style.DayStyle]}>{props.name}</Text>
+            <Text style={[style.DayStyle]}>{day}</Text>
         </View>
     );
 }

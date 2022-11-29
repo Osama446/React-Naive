@@ -12,51 +12,71 @@ import TDTools from '../components/TDTools';
 
 
 const HomeScreen = ({ navigation, props })=>{
-  let i = 0;
-  const [TaskText, setTaskText] = useState('');
-  var date = new Date(),
-	  weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday')
-    let [List, setList] = useState([]);
+    let i = 0;
+    const [TaskText, setTaskText] = useState('');
+    let [List, setList] = useState(['Task 1','Task 2','Task 3','Task 4','Task 5','Task 6',]);
+    let deleted=[];
+    let newList=[];
 
-    let day = weekday[date.getDay()]
+    const removeTask = taskName =>{
+      if(List.indexOf(taskName)!==-1){
+        deleted.push(List.splice(List.indexOf(taskName), 1));
+        console.log(deleted)
+        newList= [...List];
+        setList(newList)
+      }
+    }
+
+    let editedList =[];
+    const EditTask = (taskName, newText) =>{
+        List[List.indexOf(taskName)] = newText;
+        console.log(List);
+        editedList = [...List]
+        setList(editedList);
+    }
+
     return(
-      
     <View style={[[style.container]]}>
+      
       <View style={{flexDirection:'row', width:'100%', justifyContent:'space-evenly', alignItems:'center'}}>
+        
         <Text style={{opacity:0}}>tttttt</Text>
-        <Day name={day}></Day>
+        <Day></Day>
         <Pressable onPress={()=>{navigation.navigate("History")}} style={{marginLeft:25, marginRight:-10}}>
           <Image source={require('../images/History.png')} />
-        </Pressable>       
+        </Pressable> 
+
       </View>
 
       
-      <TDTools></TDTools>
+      <TDTools stateChanger={setList}></TDTools>
       
-
-
 
       <ScrollView style={{height:440}}>
         {List.length==0 &&<Text style={[style.Msg]}>Add your first task!</Text>}
         {
         List.map(function(item){
           i++;
-          return <Task name={item} key={item+' '+i}></Task>
+          return <Task name={item} listChanger={EditTask} key={item+' '+i}></Task>
         })
         }
       
       </ScrollView>
-      <View style={{flexDirection:'row', marginTop:25}}>
-        <TextInput placeholder='Do the Dishes...' placeholderTextColor="#60BCFF"  style={[[style.TextInput]]} autoCapitalize={true} value={TaskText} onChangeText={(text)=>{
-          setTaskText(text)
-        }} />
-        <TButtons img="+" onPress={(text)=>{
-            if(TaskText.length > 0)
-              setList(List.concat(TaskText))
-              setTaskText('')
-          }}>
 
-        </TButtons>
+
+      <View style={{flexDirection:'row', marginTop:25}}>
+        <TextInput placeholder='Do the Dishes...' placeholderTextColor="#60BCFF"  style={[[style.TextInput]]} 
+        autoCapitalize={true} 
+        value={TaskText} 
+        onChangeText={(text)=>{setTaskText(text)}} />
+
+        <TButtons img="+" onPress={()=>{
+            if(TaskText.length > 0){
+              setTaskText('')
+              setList(List.concat(TaskText))
+              console.log(List)
+            }
+          }}/>
       </View>
       
 

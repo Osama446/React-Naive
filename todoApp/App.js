@@ -23,8 +23,10 @@ const App = ()=>{
         <Stack.Navigator screenOptions={{
           headerStyle: {
             backgroundColor: '#60BCFF',
+            
           },
           headerTintColor: '#fff',
+
           headerTitleAlign:'center',
           headerTitleStyle: {
             fontFamily:'Sf Pro Display',
