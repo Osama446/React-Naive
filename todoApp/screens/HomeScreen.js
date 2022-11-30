@@ -15,11 +15,15 @@ const HomeScreen = ({ navigation, props })=>{
     let i = 0;
     const [TaskText, setTaskText] = useState('');
     let [List, setList] = useState(['Task 1','Task 2','Task 3','Task 4','Task 5','Task 6',]);
+    const [ToggleEdit, setToggleEdit] = useState(false);
+    const [ToggleRemove, setToggleRemove] = useState(false);
+
     let deleted=[];
     let newList=[];
 
+
     const removeTask = taskName =>{
-      if(List.indexOf(taskName)!==-1){
+      if(List.indexOf(taskName)!==-1 && ToggleRemove === true){
         deleted.push(List.splice(List.indexOf(taskName), 1));
         console.log(deleted)
         newList= [...List];
@@ -27,12 +31,18 @@ const HomeScreen = ({ navigation, props })=>{
       }
     }
 
+
     let editedList =[];
     const EditTask = (taskName, newText) =>{
-        List[List.indexOf(taskName)] = newText;
-        console.log(List);
-        editedList = [...List]
-        setList(editedList);
+     
+        if(ToggleEdit === true){
+          
+          List[List.indexOf(taskName)] = newText;
+          console.log(List);
+          editedList = [...List]
+          setList(editedList);}
+
+          return ToggleEdit
     }
 
     return(
@@ -49,7 +59,7 @@ const HomeScreen = ({ navigation, props })=>{
       </View>
 
       
-      <TDTools stateChanger={setList}></TDTools>
+      <TDTools toggleRemove={setToggleRemove} toggleEdit={setToggleEdit}></TDTools>
       
 
       <ScrollView style={{height:440}}>
@@ -57,7 +67,7 @@ const HomeScreen = ({ navigation, props })=>{
         {
         List.map(function(item){
           i++;
-          return <Task name={item} listChanger={EditTask} key={item+' '+i}></Task>
+          return <Task name={item} listChanger={EditTask} listRemover={removeTask} toggleRemove={setToggleRemove} toggleEdit={setToggleEdit} key={item+' '+i}></Task>
         })
         }
       

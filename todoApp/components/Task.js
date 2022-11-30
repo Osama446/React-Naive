@@ -20,11 +20,18 @@ const Task = ( props ) =>{
                             iconStyle={{  }}
                             innerIconStyle={{ borderWidth: 2 }}
                             textStyle={[style.TaskContent]}
-                            onPress={()=>{setVisible(true)
+                            onPress={()=>{ 
+                                 props?.listRemover(Text);
+                                 props?.toggleRemove(false)
+                                
+                                if(props?.listChanger()){
+                                    setVisible(true)
+                                }
                                           }}
 
                             /> 
-                            {Visible && (<TextInput style={[[style.TextInput]]} 
+                            {Visible && (<TextInput 
+                                style={[style.TextInput]}
                                 autoCapitalize={true} 
                                 value={TaskText} 
                                 onChangeText={(text)=>{setTaskText(text)}}
@@ -32,6 +39,7 @@ const Task = ( props ) =>{
                                     if(TaskText.length>0)
                                         {props?.listChanger(Text, TaskText)}
                                         setVisible(false)
+                                        props?.toggleEdit(false);
                                 }} autoFocus={true} />)
                             }
                             
@@ -51,14 +59,12 @@ const style = StyleSheet.create({
         color:'#60BCFF',
         textAlign:'center'
     },
-    TextInput:{
-    position:'absolute', 
+    TextInput:{ 
     textAlign:'center',
-    color:'black',
-    backgroundColor:'#fff',
-    height:'15%',
-    marginTop:'3%',
-    marginLeft:'40%'}
+    color:'#60BCFF',
+    marginTop:-15,
+    marginLeft:2
+    }
 
 });
 
