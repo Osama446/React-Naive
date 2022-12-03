@@ -6,7 +6,8 @@ import BouncyCheckbox from "react-native-bouncy-checkbox";
 const Task = ( props ) =>{
     
     const [Text, setText]= useState(props.name);
-    const [TaskText, setTaskText]= useState('');
+    const iniText = props.name;
+    const [editedTaskText, seteditedTaskText]= useState('');
     
     const [Visible, setVisible]= useState(false);
     
@@ -20,30 +21,37 @@ const Task = ( props ) =>{
                             iconStyle={{  }}
                             innerIconStyle={{ borderWidth: 2 }}
                             textStyle={[style.TaskContent]}
+                            isChecked={props?.doneStat}
                             onPress={()=>{ 
-                                 props?.listRemover(Text);
-                                 props?.toggleRemove(false)
-                                
-                                if(props?.listChanger()){
-                                    setVisible(true)
-                                }
-                                          }}
+                                props?.listRemover(Text);
+                                props?.toggleRemove(false)
+                                if(props?.listChanger()){setVisible(true)}
+                                props?.toggleDone(Text);
+                            }}
 
                             /> 
                             {Visible && (<TextInput 
                                 style={[style.TextInput]}
                                 autoCapitalize={true} 
-                                value={TaskText} 
-                                onChangeText={(text)=>{setTaskText(text)}}
+                                value={editedTaskText} 
+                                onChangeText={(text)=>{
+                                    if(props?.listChanger()){
+                                    seteditedTaskText(text)
+                                    setText(text)}
+                                }}
+                            
                                 onEndEditing={()=>{
-                                    if(TaskText.length>0)
-                                        {props?.listChanger(Text, TaskText)}
+                                    if(editedTaskText.length === 0){
+                                        setText(props.name)
+                                    }
+                                    if(editedTaskText.length>0)
+                                        {props?.listChanger(iniText, editedTaskText)}
                                         setVisible(false)
                                         props?.toggleEdit(false);
                                 }} autoFocus={true} />)
                             }
                             
-                                                    
+                            
         </View>
     );
 }
@@ -63,7 +71,8 @@ const style = StyleSheet.create({
     textAlign:'center',
     color:'#60BCFF',
     marginTop:-15,
-    marginLeft:2
+    marginLeft:2,
+    display:'none'
     }
 
 });

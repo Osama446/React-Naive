@@ -4,14 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './screens/HomeScreen'
-
-const AnotherScreen = ()=>{
-  return(
-  <View style={{padding:15}}>
-      <Text style={{color:'black'}}>Another Screen</Text>
-  </View>
-);
-};
+import AnotherScreen from './screens/AnotherScreen'
 
 
 const Stack = createNativeStackNavigator();
