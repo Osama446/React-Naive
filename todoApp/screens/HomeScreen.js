@@ -47,11 +47,15 @@ const HomeScreen = ({ navigation })=>{
 
     
     useEffect(() => {
+      
+
       const promise = getData('@storedList');
-      promise.then((arr)=>{if(List.length===0){setList(arr); added=true}})
+      promise.then((arr)=>{if(List.length===0 && typeof(arr) === "object" ){
+        console.log(typeof(arr))
+        setList(arr); added=true}})
       
       const deletedPromise = getData('@deletedList');
-      deletedPromise.then((deleted)=>{if(Deleted.length===0){setDeleted(deleted); added=true}})
+      deletedPromise.then((deleted)=>{if(Deleted.length===0 && typeof(deleted) === "object"){setDeleted(deleted); added=true}})
       
     }, [added])
     
