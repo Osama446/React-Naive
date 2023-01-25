@@ -7,7 +7,11 @@ React Notes:
   2. For child-parent communication we create a call back function in the parent then pass it to the child to get access to the data of the parent.
      Eg: 
         
-        `App.js
+        `
+        
+        App.js
+        
+        
           const addGoalHandler = newGoal =>{
               setCourseGoals(previousCourseGoals => previousCourseGoals.concat(newGoal));
             }
