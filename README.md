@@ -21,7 +21,8 @@ React Notes:
           
         `
         
-        
+    
+  3. When adding a ScrollView component make sure it is in a view so it does not miss with the width and height of other components  
   4. The Flatlist component will always look for a key value in objects if they are defined, if I need to use another value as the key we can use the 
      key extractor that will recieve a function that will automatically have the item and the index and we can return the key name of the key we want to use.
      An id can be used for an example in an object that has ids
