@@ -28,7 +28,7 @@ React Notes:
 
 
 
-           `elevation: 4, // android
+           elevation: 4, // android
 
 
            shadowColor: 'black', // ios
@@ -37,7 +37,7 @@ React Notes:
            shadowOffset: { width: 0, height: 2 },
 
 
-           shadowRadius: 6,`
+           shadowRadius: 6,
 
      
   8. 
