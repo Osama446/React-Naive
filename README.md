@@ -28,8 +28,14 @@ React Notes:
 
 `
      elevation: 4, // android
+     
+     
      shadowColor: 'black', // ios
+     
+     
      shadowOffset: { width: 0, height: 2 },
+     
+     
      shadowRadius: 6,
      `
      
