@@ -40,4 +40,4 @@ React Notes:
            shadowRadius: 6,
 
      
-  8. 
+  8. props can be used to replicate the cascading styles of css by passing a style prop and adding it to the childern custom element style. 
