@@ -26,11 +26,11 @@ React Notes:
      An id can be used for an example in an object that has ids
   6. to add shadows   
 
-
+`
      elevation: 4, // android
      shadowColor: 'black', // ios
      shadowOffset: { width: 0, height: 2 },
      shadowRadius: 6,
-     
+     `
      
   8. 
