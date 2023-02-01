@@ -47,3 +47,7 @@ React Notes:
     the ios there is no difference between them
     
     on android the window excludes the status bar while the screen includes the status bar.
+    
+    
+  10. For platform specific styling we can use the platform component then using a ternary expression or using the Platform.select() that takes an object.
+      Platform.select({ ios: 0, android:2 }) this will pick the value for each platform.
