@@ -42,4 +42,8 @@ React Notes:
      
   8. props can be used to replicate the cascading styles of css by passing a style prop and adding it to the childern custom element style. 
   
-  9. 
+  9. Dimensions api .get method has two options 'screen' or 'window' 
+    
+    the ios there is no difference between them
+    
+    on android the window excludes the status bar while the screen includes the status bar.
