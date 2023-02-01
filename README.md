@@ -49,5 +49,9 @@ React Notes:
     on android the window excludes the status bar while the screen includes the status bar.
     
     
-  10. For platform specific styling we can use the platform component then using a ternary expression or using the Platform.select() that takes an object.
+  9. For platform specific styling we can use the platform component then using a ternary expression or using the Platform.select() that takes an object.
       Platform.select({ ios: 0, android:2 }) this will pick the value for each platform.
+      
+      also adding the .android or .ios to a component before the .js will make react automatically know what to call internally so we can have components that 
+      only work on ios or only on android.
+      
