@@ -55,3 +55,7 @@ React Notes:
       also adding the .android or .ios to a component before the .js will make react automatically know what to call internally so we can have components that 
       only work on ios or only on android.
       
+      
+      
+      
+  10. when passing parameters through different screens we can use the useRoute hook to get the route paramters in a component that is not named as a screen in the app js         file
