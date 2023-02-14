@@ -59,3 +59,6 @@ React Notes:
       
       
   10. when passing parameters through different screens we can use the useRoute hook to get the route paramters in a component that is not named as a screen in the app js         file
+
+
+  11. useLayout hook works like useEffect hook but renders at the same time of rendering the componenet and it's used in the navigation to set the title dynamically.
