@@ -62,3 +62,24 @@ React Notes:
 
 
   11. useLayout hook works like useEffect hook but renders at the same time of rendering the componenet and it's used in the navigation to set the title dynamically.
+  
+  
+  12. In the case where we have multiple input fields we can use one useState hook and setting the initial state as an object
+      then we can update the data by expecting an identifier.
+      
+      Example:
+      
+      
+        const [inputValues, setInputValues] = useState({
+            amount: '',
+            date: '',
+            description:''
+        });
+        
+       function inputChangeHandler(inputIdentifier, enteredValues){
+        setInputValues((currentValues)=>{
+            return {...currentValues, 
+                      [inputIdentifier]: enteredValues
+                   }
+         });
+        }
