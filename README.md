@@ -87,3 +87,13 @@ React Notes:
             
             
       to use this handler we preconfigure the functions using the bind method.
+
+
+
+          useEffect(() => {
+    async function fetchExpensive() {
+      await getExpenses();
+    }
+
+    fetchExpensive();
+  }, []);
