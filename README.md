@@ -90,7 +90,7 @@ React Notes:
 
 
 
-          useEffect(() => {
+    useEffect(() => {
     async function fetchExpensive() {
       await getExpenses();
     }
